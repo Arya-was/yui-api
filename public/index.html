@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="/static/style.css" type="text/css">
+  <link href="/static/profile.jpg" rel="icon">
+  <title>YUI - API</title>
+</head>
+<header>
+  <div class="kiri">
+    <h3>YUI <span>API</span></h3>
+  </div>
+</header>
+
+<body>
+  <div class="menu-btn">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="side-bar">
+    <div class="close-btn">
+      <i class="fas fa-times"></i>
+    </div>
+    <center>
+      <img src="/static/profile.jpg" class="anunya" alt="">
+      <h3>Welcome To<br></h3>
+      <h4>Yui <span>API</span></h4>
+    </center>
+    <div class="menu">
+      <div class="item">
+        <a class="sub-btn"><i class="fas fa-download"></i>Downloader<i class="fas fa-angle-right dropdown"></i></a>
+        <div class="sub-menu">
+          <a class="sub-item" href="/api/youtube?URL=https://www.youtube.com/watch?v=1cdsbYuLahc&type=mp4&quality=360" target="_blank"><i>Youtube Video</i></a>
+          <a class="sub-item" href="/api/youtube?URL=https://www.youtube.com/watch?v=1cdsbYuLahc&type=mp3&quality=128" target="_blank"><i>Youtube Audio</i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="main">
+    <h1>WELCOME TO YUI API</h1>
+  </section>
+
+  <script type="text/javascript">
+    var loader = document.querySelector('.loader')
+    window.addEventListener("load", wush);
+    function wush(){
+      loader.classList.add("ilang");
+    }
+    $(document).ready(function(){
+      $('.sub-btn').click(function(){
+        $(this).next('.sub-menu').slideToggle();
+        $(this).find('.dropdown').toggleClass('rotate');
+      });
+
+      $('.menu-btn').click(function(){
+        $('.side-bar').addClass('active');
+        $('.menu-btn').css("visibility", "hidden");
+      });
+
+      $('.close-btn').click(function(){
+        $('.side-bar').removeClass('active');
+        $('.menu-btn').css("visibility", "visible");
+      });
+    });
+  </script>
+</body>
+</html>

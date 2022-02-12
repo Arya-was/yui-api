@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  min-height: 100vh;
+  background: url(/static/background.jpg)no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+header{
+  background: #cc33ff ;
+  padding: 20px;
+  width: 100%;
+  height: 60px;
+}
+
+.loader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border-color: #fff;
+  margin-top: 60px;
+  animation: flow 5s linear infinite;
+  box-shadow: 0px 0px 10px #B9EEEE,
+  0px 0px 40px #fff;
+}
+
+.ilang {
+  animation: ilang 5s forwards;
+  transition: 0.6s ease;
+}
+
+@keyframes ilang{
+  50%{
+    opacity: 1;
+    }100%{
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes flow{
+    0%{
+      transform: scale(0);
+      opacity: 0;
+    }
+    50%{
+      opacity: 1;
+    }
+    100%{
+      transform: scale(1);
+      opacity: 0;
+    }
+    
+  }
+
+  .kiri h3{
+    color: #00cccc;
+    text-align: center;
+    margin: -20px;
+    font-size: 25px;
+    font-weight: 1000;
+    margin-top: -10px;
+  }
+
+  footer{
+    background: #660033 ;
+    padding: 20px;
+    width: 100%;
+    height: 40px;
+  }
+
+  .kiri span{
+    color: #fff;
+  }
+
+  .bawah h4{
+    color: #fff;
+    text-align: center;
+    margin: -20px;
+    font-size: 13px;
+    font-weight: 200;
+    margin-top: -10px;
+  }
+
+  .bawah span{
+    color: #18ffff;
+  }
+
+  .side-bar{
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    width: 290px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    overflow-y: auto;
+    transition: 0.6s ease;
+    transition-property: left;
+  }
+
+  .side-bar.active{
+    left: 0;
+  }
+
+  .side-bar .menu{
+    width: 100%;
+    margin-top: 80px;
+  }
+
+  .side-bar .menu .item{
+    position: relative;
+    cursor: pointer;
+  }
+
+  .side-bar .menu .item a{
+    color: #ff1aff;
+    font-size: 12px;
+    text-decoration: none;
+    display: block;
+    padding: 5px 30px;
+    line-height: 40px;
+    font-weight: 600;
+  }
+
+  .side-bar .menu .item a:hover{
+    background: rgba(0, 0, 153, 0.4);
+    transition: 0.7s ease;
+  }
+
+  .side-bar .menu .item i{
+    color: #fff;
+    margin-right: 15px;
+    text-shadow: 0 0 10px #ff1aff;
+  }
+
+  .side-bar .menu .item a .dropdown{
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    transition: 0.3s ease;
+  }
+
+  .side-bar .menu .item .sub-menu{
+    background: rgba(0, 0, 102, 0.2);
+    display: none;
+  }
+
+  .side-bar .menu .item .sub-menu a{
+    color: #B9EEEE;
+    font-weight: 450;
+    padding-left: 80px;
+  }
+
+  .side-bar .menu .item .sub-menu a:hover{
+    background: rgba(0,255,255, 0.5);
+    transition: 0.3s ease;
+  }
+
+  .side-bar .anunya{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-top: 60px;
+    box-shadow: 0px 0px 10px #cc33ff,
+    0px 0px 40px #cc33ff;
+    animation: blinkk 5s linear infinite;
+  }
+
+  @keyframes blinkk{
+    50%{
+      opacity: 0.5;
+    }
+  }
+
+  .side-bar h3{
+    color: #fff;
+  }
+
+  .side-bar h4{
+    color: #fff;
+  }
+
+  .side-bar span{
+    color: #18ffff;
+  }
+
+  .rotate{
+    transform: rotate(90deg);
+  }
+
+  .close-btn{
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    right: 0;
+    margin: 25px;
+    cursor: pointer;
+  }
+
+  .menu-btn{
+    position: absolute;
+    font-size: 23px;
+    margin: 25px;
+    cursor: pointer;
+    margin-top: -50px;
+  }
+
+  .menu-btn i{
+    background: #cc33ff;
+    color: #fff;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: 5s ease;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .menu-btn i:hover{
+    box-shadow: 0px 0px 10px #B9EEEE,
+    0px 0px 20px #cc33ff;
+    text-shadow: 0 0 10px #00FFFF;
+  }
+
+  .main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .main h1{
+    color: #ffcce6;
+    font-size: 60px;
+    text-align: center;
+    line-height: 50px;
+    text-shadow: 0 0 10px #ff4da6,
+    0 0 20px #ff4da6,
+    0 0 40px #ff4da6;
+  }
+
+  .main span{
+    color: #00FFFF;
+    font-size: 60px;
+    text-align: center;
+    line-height: 5px;
+  }
+
+  @media (max-width: 900px){
+    .main h1{
+      font-size: 40px;
+      line-height: 60px;
+    }
+  }
