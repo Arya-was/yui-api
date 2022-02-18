@@ -16,11 +16,13 @@ function getDoujinObj(url) {
 				details[tag.substring(0, tag.length - 1).toLowerCase()] = tags[i + 1].replace(/(\([0-9,]+\))([a-zA-Z])/g, '$1 $2').split(/(?<=\))\s(?=[a-zA-Z])/);
 			}
 		});
-		const pages = Object.entries($('.gallerythumb').find('img')).map(image => {
-			return image[1].attribs
-			? image[1].attribs['data-src'].replace(/t(\.(jpg|png|gif))/, '$1').replace('t.nhentai', 'i.nhentai')
-			: null;
-		})
+		const pages = []; 
+		$('#thumbnail-container').find('.thumbs > div.thumb-container').each((i, e) => {
+			pages.push($(e)
+			.find('.gallerythumb > img')
+			.attr('data-src')
+			.replace(/\/\/t/, '//i')
+			.replace(/t\.jpg/g, '.jpg'))
 		resolve({ title,nativeTitle, details, pages })
 	})
 }
