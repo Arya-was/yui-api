@@ -1,9 +1,9 @@
 const got = require('got');
 const cheerio = require('cheerio');
 
-function getDoujinObj(url) {
+function getDoujinObj(id) {
 	return new Promise(async(resolve, reject) => {
-		const req = await got(url)
+		const req = await got('https://nhentai.net/g/' + id + '/')
 		const $ = cheerio.load(req.body)
 		let title = $('#info').find('h1').text();
 		let nativeTitle = $('#info').find('h2').text();
