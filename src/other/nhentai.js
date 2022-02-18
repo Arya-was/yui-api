@@ -87,7 +87,7 @@ function home(page = 1) {
 
 
 function search(query, page = 1) {
-	return new Promise((resolve, reject) => {
+	return new Promise(async(resolve, reject) => {
 		const req = await got(`https://nhentai.net/search/?q=${query}&page=${page}`)
 		const $ = cheerio.load(req.body)
 		const result = [];
