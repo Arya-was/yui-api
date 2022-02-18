@@ -1,6 +1,7 @@
 const express = require("express");
 var app = express();
 const indexApi = require('./routes/api')
+process.on('uncaughtException', console.log)
 
 const PORT = process.env.PORT || 5000;
 
