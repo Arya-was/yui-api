@@ -1,5 +1,5 @@
 const { youtube, tiktok, instagram, instagramStory, twitter, facebook, soundcloud } = require('../src/downloader')
-const { nhread, nhdetail, nhartist, nhtag, nhhome, nhsearch } = require('../src/other')
+const { nhread, nhdetail, nhartist, nhtag, nhhome, nhsearch, nhDl } = require('../src/other')
 const express = require('express');
 const router = express.Router();
 
@@ -16,5 +16,6 @@ router.get('/nhartist', nhartist);
 router.get('/nhtag', nhtag);
 router.get('/nhhome', nhhome);
 router.get('/nhsearch', nhsearch);
+router.get('/nhDl/:path', nhDl);
 
 module.exports = router;
