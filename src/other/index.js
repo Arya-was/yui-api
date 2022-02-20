@@ -1,4 +1,6 @@
+const fs = require('fs')
 const { getDoujinObj, getDoujinsByArtist, getDoujinsByTag ,home, search } = require('./nhentai')
+const { toPdf } = require(process.cwd() + '/routes/util')
 
 
 async function nhread(req, res) {
@@ -91,11 +93,22 @@ async function nhsearch(req, res) {
 
 }
 
+
+async function nhDl(req, res) {
+	const { path } = req.params
+	let obj = await getDoujinObj(path)
+	let pages = obj.pages.map(a => 'https://external-content.duckduckgo.com/iu/?u=' + a)
+	let imgToPdf = await toPdf(pages)
+	await fs.writeFileSync(process.cwd() + `/${path}.pdf`, imgToPdf)
+	await res.download(process.cwd() + `/${path}.pdf`, `${obj.title}.pdf`)
+}
+
 module.exports = {
 	nhread,
 	nhdetail,
 	nhartist,
 	nhtag,
 	nhhome,
-	nhsearch
+	nhsearch,
+	nhDl
 }
