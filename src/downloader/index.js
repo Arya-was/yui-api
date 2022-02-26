@@ -4,6 +4,8 @@ const { ig, igS } = require('./instagram')
 const { twt } = require('./twitter')
 const { fb } = require('./facebook')
 const { scdl } = require('./soundcloud')
+const { pin } = require('./pinterest')
+const { aiovid } = require('./aiovideodl')
 
 async function youtube(req, res) {
 	const URL = req.query.URL,
@@ -104,6 +106,34 @@ async function soundcloud(req, res) {
 		});
 }
 
+
+async function pinterest(req, res) {
+	const URL = req.query.URL
+	if (!URL) return res.status(404).json({
+		status: 404,
+		message: 'Input Parameter URL'
+	})
+		const result = await pin(URL)
+		res.status(200).json({
+			status: 200, 
+			result: result
+		});
+}
+
+
+async function aiovideodl(req, res) {
+	const URL = req.query.URL
+	if (!URL) return res.status(404).json({
+		status: 404,
+		message: 'Input Parameter URL'
+	})
+		const result = await aiovid(URL)
+		res.status(200).json({
+			status: 200, 
+			result: result
+		});
+}
+
 module.exports = {
 	youtube,
 	tiktok,
@@ -111,5 +141,7 @@ module.exports = {
 	instagramStory,
 	twitter,
 	facebook,
-	soundcloud
+	soundcloud,
+	pinterest,
+	aiovideodl
 }
