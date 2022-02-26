@@ -29,7 +29,7 @@ function aiovid(url) {
 			},
 			form: payload
 		}).json()
-		console.log(req)
+		resolve(req)
 	})
 }
 
