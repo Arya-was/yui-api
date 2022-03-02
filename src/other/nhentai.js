@@ -23,7 +23,7 @@ function getDoujinObj(id) {
 			.attr('data-src')
 			.replace(/\/\/t/, '//i')
 			.replace(/t\.jpg/g, '.jpg')
-			.replace(/t\.jpg/g, '.png'))
+			.replace(/t\.png/g, '.png'))
 		})
 		resolve({ title,nativeTitle, details, pages })
 	})
