@@ -13,6 +13,9 @@ app.use('/api', indexApi);
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/index.html')
 })
+app.get('/nhentai', (req, res) => {
+	res.sendFile(__dirname + '/public/nhentai.html')
+})
 app.get('/static/style.css', (req, res) => {
 	res.sendFile(__dirname + '/public/style.css')
 })
