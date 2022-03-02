@@ -22,7 +22,7 @@ function getDoujinObj(id) {
 			.find('.gallerythumb > img')
 			.attr('data-src')
 			.replace(/\/\/t/, '//i')
-			.replace(/t\.jpg/g, '.jpg'))
+			.replace(/t\.jpg/g, '.jpg')
 			.replace(/t\.jpg/g, '.png'))
 		})
 		resolve({ title,nativeTitle, details, pages })
