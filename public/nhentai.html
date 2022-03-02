@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Nhentai Downloader</title>
+
+</head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .heading {
+        font-family: Arial;
+        margin-top: 40vh;
+    }
+
+    .URL-input, .convert-button {
+        font-size: 1.3rem;
+        padding: 5px 10px;
+    }
+
+    .URL-input {
+        border-radius: 4px 0 0 4px;
+        width: 30rem;
+        text-align: left;
+        border: 2px solid #ffcce6;
+        background: #ffcce6;
+        outline: none;
+    }
+
+    .URL-input:focus {
+        border: 2px solid #0485ff;
+    }
+
+    .convert-button {
+        border-radius: 0px 4px 4px 0px;
+        border: 2px solid #0485ff;
+        background: #0485ff;
+        color: white;
+    }
+</style>
+<body>
+    <h1 class="heading">Nhentai Downloader PDF</h1>
+    <input type="text" class="URL-input" placeholder="Enter ID">
+    <button class="convert-button">Covert</button>
+    <script>
+        var convertBtn = document.querySelector(".convert-button");
+        var URLinput = document.querySelector(".URL-input");
+
+        convertBtn.addEventListener("click", function(){
+            console.log(`URL : ${URLinput.value}`);
+            sendURL(URLinput.value);
+        })
+
+        function sendURL(URL) {
+            window.location.href = `https://yui-api.herokuapp.com/api/nhDl/${URL}`;
+        }
+    </script>
+</body>
+</html>
