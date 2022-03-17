@@ -54,8 +54,12 @@
         var URLinput = document.querySelector(".URL-input");
 
         convertBtn.addEventListener("click", function(){
-            console.log(`URL : ${URLinput.value}`);
-            sendURL(URLinput.value);
+            if (!convertBtn.value) {
+                alert('Please Enter Code!');
+                } else {
+                    console.log(`URL : ${URLinput.value}`);
+                    sendURL(URLinput.value);
+                }
         })
 
         function sendURL(URL) {
