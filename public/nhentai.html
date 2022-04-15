@@ -1,70 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie-edge">
-    <title>Nhentai Downloader</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Nhentai By Rya</title>
+  <style type="text/css">
+    body {
+      background: url('/static/background.jpg');
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+
+    button {
+      user-select: none;
+    }
+
+    #feedback-page{
+      text-align:center;
+    }
+
+
+    #form-div {
+      background-color:rgba(72,72,72,0.4);
+      padding-left:35px;
+      padding-right:35px;
+      padding-top:35px;
+      padding-bottom:50px;
+      width: 450px;
+      left: 50%;
+      position: absolute;
+      margin-top:30px;
+      margin-left: -260px;
+      -moz-border-radius: 7px;
+      -webkit-border-radius: 7px;
+    }
+
+    .feedback-input {
+      color:#3c3c3c;
+      font-weight:500;
+      font-size: 18px;
+      border-radius: 0;
+      line-height: 22px;
+      background-color: #fbfbfb;
+      padding: 10px 5px;
+      width:100%;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 3px solid rgba(0,0,0,0);
+    }
+
+    .feedback-input:focus{
+      background: #fff;
+      border: 3px solid #3498db;
+      color: #3498db;
+      outline: none;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+
+    .focused{
+      color:#30aed6;
+      border:#30aed6 solid 3px;
+    }
+
+    ::-webkit-input-placeholder {
+     text-align: center;
+   }
+   :-moz-placeholder {
+     text-align: center;  
+   }
+   ::-moz-placeholder {
+     text-align: center;  
+   }
+
+   :-ms-input-placeholder {  
+     text-align: center; 
+   }
+
+   input:hover,
+   input:focus {
+    background-color: white;
+  }
+
+
+  @media only screen and (max-width: 580px) {
+    #form-div{
+      left: 3%;
+      margin-right: 3%;
+      width: 88%;
+      margin-left: 0;
+      padding-left: 3%;
+      padding-right: 3%;
+    }
+  }
+
+
+  .btn-group {
+    display: flex;
+  }
+  .btn-group button {
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    font-size:20px;
+    width: 100%;
+    margin: 2px 0;
+  }
+
+  #download-pdf {
+    background-color: #816bbf;
+    border: 1px solid #3a2180;
+  }
+  #download-pdf:hover {
+    background-color: #6b5b95;
+  }
+
+  #read-pdf {
+    background-color: #4CAF50;
+    border: 1px solid green;
+  }
+  #read-pdf:hover {
+    background-color: #3e8e41;
+  }
+
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .btn-group button:not(:last-child) {
+    border-right: none;
+  }
+</style>
 
 </head>
-<style type="text/css">
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        text-align: center;
-    }
-
-    .heading {
-        font-family: Arial;
-        margin-top: 40vh;
-    }
-
-    .URL-input, .convert-button {
-        font-size: 1.3rem;
-        padding: 5px 10px;
-    }
-
-    .URL-input {
-        border-radius: 4px 0 0 4px;
-        width: 30rem;
-        text-align: left;
-        border: 2px solid #ffcce6;
-        background: #ffcce6;
-        outline: none;
-    }
-
-    .URL-input:focus {
-        border: 2px solid #0485ff;
-    }
-
-    .convert-button {
-        border-radius: 0px 4px 4px 0px;
-        border: 2px solid #0485ff;
-        background: #0485ff;
-        color: white;
-    }
-</style>
 <body>
-    <h1 class="heading">Nhentai Downloader PDF</h1>
-    <input type="text" class="URL-input" placeholder="Enter ID">
-    <button class="convert-button">Covert</button>
-    <script>
-        var convertBtn = document.querySelector(".convert-button");
-        var URLinput = document.querySelector(".URL-input");
 
-        convertBtn.addEventListener("click", function(){
-            if (!convertBtn.value) {
-                alert('Please Enter Code!');
-                } else {
-                    console.log(`URL : ${URLinput.value}`);
-                    sendURL(URLinput.value);
-                }
-        })
+ <div id="form-div">
+  <p class="name">
+    <input id="url" type="url" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
+    autocomplete="off"
+    required
+    placeholder="212121" />
+  </p>
+  <div class="btn-group">
+    <button id="read-pdf" data-format="nhread">Read <b>PDF</b></button>
+    <button id="download-pdf" data-format="nhDl">Download <b>PDF</b></button>
+  </div>
+</div>
 
-        function sendURL(URL) {
-            window.location.href = `https://yui-api.herokuapp.com/api/nhDl/${URL}`;
-        }
-    </script>
+<script>
+  (function () {
+
+    var btns = document.querySelector('.btn-group');
+    var btnDownPdf = document.getElementById('download-pdf');
+    var URLinput = document.getElementById('url');
+
+    function redirect(url, format) {
+      window.location.href = `https://yui-api.herokuapp.com/api/${format}/${encodeURIComponent(url)}`;
+    }
+
+    function handleClick(evt) {
+      evt.preventDefault();
+      var url = URLinput.value.trim();
+      var format = evt.target.dataset.format;
+      if (!url || Number(url) >= 5) {
+        alert('Input Nhentai code!');
+      } else if (format) {
+        redirect(url, format);
+      }
+    }
+
+    btns.addEventListener('click', handleClick);
+
+  })();
+</script>
 </body>
 </html>
