@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 function getDoujinObj(id) {
 	return new Promise(async(resolve, reject) => {
-		const req = await got('https://nhentai.to/g/' + id + '/')
+		const req = await got('https://nhentai.xxx/g/' + id + '/')
 		const $ = cheerio.load(req.body)
 		let title = $('#info').find('h1').text();
 		let nativeTitle = $('#info').find('h2').text();
@@ -32,7 +32,7 @@ function getDoujinObj(id) {
 
 function getDoujinsByArtist(artist, page = 1) {
 	return new Promise(async(resolve, reject) => {
-		const req = await got(`https://nhentai.to/artist/${artist}/?page=${page}`)
+		const req = await got(`https://nhentai.xxx/artist/${artist}/?page=${page}`)
 		const $ = cheerio.load(req.body)
 		const result = [];
 		$('div[class="container index-container"] .gallery a').each((i, e) => {
@@ -51,7 +51,7 @@ function getDoujinsByArtist(artist, page = 1) {
 
 function getDoujinsByTag(tag, page = 1) {
 	return new Promise(async(resolve, reject) => {
-		const req = await got(`https://nhentai.to/tag/${tag}/?page=${page}`)
+		const req = await got(`https://nhentai.xxx/tag/${tag}/?page=${page}`)
 		const $ = cheerio.load(req.body)
 		const result = [];
 		$('div[class="container index-container"] .gallery a').each((i, e) => {
@@ -70,7 +70,7 @@ function getDoujinsByTag(tag, page = 1) {
 
 function home(page = 1) {
 	return new Promise(async(resolve, reject) => {
-		const req = await got(`https://nhentai.to/?page=${page}`)
+		const req = await got(`https://nhentai.xxx/?page=${page}`)
 		const $ = cheerio.load(req.body)
 		const result = [];
 		$('div[class="container index-container"] .gallery a').each((i, e) => {
@@ -89,7 +89,7 @@ function home(page = 1) {
 
 function search(query, page = 1) {
 	return new Promise(async(resolve, reject) => {
-		const req = await got(`https://nhentai.to/search/?q=${query}&page=${page}`)
+		const req = await got(`https://nhentai.xxx/search/?q=${query}&page=${page}`)
 		const $ = cheerio.load(req.body)
 		const result = [];
 		$('div[class="container index-container"] .gallery a').each((i, e) => {
